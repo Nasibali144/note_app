@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:note_app/models/note_model.dart';
+import 'package:note_app/services/io_service.dart';
 
 class FileService {
   Directory directory = Directory(Directory.current.path + "\\assets\\files");
@@ -42,5 +43,28 @@ class FileService {
     String result = await file.readAsString();
     Note note = Note.fromJson(jsonDecode(result));
     return note;
+  }
+
+  Future<String> updateFile(String title) async {
+    String path = directory.path + "\\$title.note";
+    Note note = await readFile(title);
+
+    writeln("O'zgartirmoqchi bo'lingan note:");
+    writeln(note);
+    writeln("Yanglinishni kiriting:");
+    String content = "";
+    String exit = "";
+    while(exit != "Save") {
+      exit = read();
+      if(exit == "Save") {
+        break;
+      }
+      content += (exit + "\n");
+    }
+
+    note.content = content;
+    note.time = DateTime.now().toString();
+
+    return await writeFile(note, path);
   }
 }

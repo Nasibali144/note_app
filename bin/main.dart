@@ -1,8 +1,6 @@
 import 'package:note_app/models/note_model.dart';
-import 'package:note_app/services/data_service.dart';
 import 'package:note_app/services/file_service.dart';
 import 'package:note_app/services/io_service.dart';
-import 'package:note_app/services/ext_service.dart';
 
 void main() async {
   FileService fileService = FileService();
@@ -14,6 +12,9 @@ void main() async {
   
   write("Iltimos note ni nomini kiriting: ");
   title = read();
+
+  // await fileService.updateFile(title);
+
   Note note = await fileService.readFile(title);
   print(note);
 
