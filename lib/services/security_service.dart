@@ -1,7 +1,7 @@
 import 'package:note_app/services/data_service.dart';
 
 class SecurityService {
-  DataService _dataService = DataService();
+  final DataService _dataService = DataService();
 
   // setPassword
   Future<bool> setPassword(String password) async {
