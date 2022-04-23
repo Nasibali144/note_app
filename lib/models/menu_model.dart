@@ -1,3 +1,3 @@
 abstract class Menu {
-  void build();
+  Future<void> build();
 }

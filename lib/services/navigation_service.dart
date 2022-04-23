@@ -8,34 +8,33 @@ class Navigator {
     _list.add(menu);
   }
 
-  static _runMenu() {
-    _list.last.build();
+  static Future _runMenu() async {
+    await _list.last.build();
   }
 
-  //hali bor
   static Menu? _findMenu(String id) {
     return MyApp.routeMenu[id];
   }
 
-  static push(Menu menu) {
+  static Future push(Menu menu) async {
     _list.add(menu);
-    _runMenu();
+    await _runMenu();
   }
 
-  // hali bor
-  static pushNamed(String id) {
+  static Future<void> pushNamed(String id) async{
     Menu menu = _findMenu(id)!;
-    push(menu);
+    await push(menu);
   }
 
-  static String? pop({String? message}) {
+  static Future<String?> pop({String? message}) async  {
     _list.removeLast();
-    _runMenu();
+    await _runMenu();
     return message;
   }
 
-  // hali bor
-  static String popUntil() {
-    return "";
+  static Future<String?> popUntil({String? message}) async {
+    _list.removeRange(1, _list.length);
+    await _runMenu();
+    return message;
   }
 }

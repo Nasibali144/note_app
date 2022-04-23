@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:note_app/models/note_model.dart';
 import 'package:note_app/services/io_service.dart';
+import 'package:note_app/services/ext_service.dart';
 
 class FileService {
   Directory directory = Directory(Directory.current.path + "\\assets\\files");
@@ -18,7 +19,7 @@ class FileService {
     bool isFileCreated = await file.exists();
     if(isFileCreated) {
       /// this below code will be edited when I set language service
-      throw Exception("This file already created please try create new file");
+      throw Exception("file_error".tr);
     }
     await file.create();
     return file.path;
