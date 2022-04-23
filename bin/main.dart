@@ -10,6 +10,8 @@ void main() async {
     home: HomeMenu(),
     locale: await LangService.currentLanguage(),
     routes: {
+      // key: value
+      // /home_menu: HomeMenu()
       HomeMenu.id: HomeMenu(),
       CreateNoteMenu.id: CreateNoteMenu(),
     },

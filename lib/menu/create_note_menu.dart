@@ -39,6 +39,7 @@ class CreateNoteMenu extends Menu {
     Note note = Note(title: title, content: content);
     await fileService.writeFile(note, path);
     writeln("note_save".tr);
+    write("\n\n\n\n\n\n");
     await Navigator.pop();
   }
 

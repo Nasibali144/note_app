@@ -12,6 +12,7 @@ class HomeMenu extends Menu{
   Future<void> selectFunction(String selectedMenu) async {
     switch(selectedMenu) {
       case "I": {
+        write("\n\n\n\n\n\n");
         await Navigator.push(CreateNoteMenu());
       } break;
       case "II": {} break;
