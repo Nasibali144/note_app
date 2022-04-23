@@ -4,7 +4,7 @@ enum Language {en, ru, uz}
 
 class LangService {
   // field
-  static Language _language = Language.en;
+  static Language _language = Language.uz;
   static final DataService _dataService = DataService();
 
   static Future<Language> currentLanguage() async {

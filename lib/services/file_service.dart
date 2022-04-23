@@ -46,6 +46,13 @@ class FileService {
     return note;
   }
 
+  Future<Note> readFileFromPath(String path) async {
+    File file = File(path);
+    String result = await file.readAsString();
+    Note note = Note.fromJson(jsonDecode(result));
+    return note;
+  }
+
   Future<String> updateFile(String title) async {
     String path = directory.path + "\\$title.note";
     Note note = await readFile(title);
@@ -67,5 +74,44 @@ class FileService {
     note.time = DateTime.now().toString();
 
     return await writeFile(note, path);
+  }
+
+  Future<String> updateFileFromPath(String path) async {
+    Note note = await readFileFromPath(path);
+
+    writeln("previous_note".tr);
+    writeln(note);
+    writeln("edit_note".tr);
+    String content = "";
+    String exit = "";
+    while(exit != "save".tr) {
+      exit = read();
+      if(exit == "save".tr) {
+        break;
+      }
+      content += (exit + "\n");
+    }
+
+    note.content = content;
+    note.time = DateTime.now().toString();
+
+    return await writeFile(note, path);
+  }
+
+  Future<void> deleteFile(String title) async{
+    File file = File(directory.path + "/$title.note");
+    file.delete();
+  }
+
+  Future<void> deleteFileFromPath(String path) async{
+    File file = File(path);
+    file.delete();
+  }
+
+  Future<void> deleteAllFile() async{
+    List<FileSystemEntity> list = directory.listSync();
+    for(var item in list) {
+      await item.delete();
+    }
   }
 }

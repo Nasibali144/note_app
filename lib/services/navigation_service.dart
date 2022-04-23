@@ -26,6 +26,17 @@ class Navigator {
     await push(menu);
   }
 
+  static Future<void> pushReplacement(Menu menu) async {
+    _list.removeLast();
+    _list.add(menu);
+    await _runMenu();
+  }
+
+  static Future<void> pushReplacementNamed(String id) async{
+    Menu menu = _findMenu(id)!;
+    await pushReplacement(menu);
+  }
+
   static Future<String?> pop({String? message}) async  {
     _list.removeLast();
     await _runMenu();
