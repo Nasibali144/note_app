@@ -8,8 +8,10 @@ class LangService {
   static final DataService _dataService = DataService();
 
   static Future<void> init() async {
-    String result = await _dataService.readData(key: "language");
-    _language = _stringToLanguage(result);
+    var result = await _dataService.readData(key: "language");
+    if(result != null) {
+      _language = _stringToLanguage(result);
+    }
   }
 
   // setter
