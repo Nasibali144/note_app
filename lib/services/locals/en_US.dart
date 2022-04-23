@@ -10,4 +10,7 @@ const enUS = {
   'write_note': "You can write on the note. (Type 'save' to save):",
   'save': 'save',
   'note_save': "Note successfully saved!",
+  'number_note': "Enter the Note number",
+  'delete_all': "Delete all notes",
+  'delete_selected': "Selective deletion",
 };

@@ -4,6 +4,7 @@ import 'package:note_app/services/io_service.dart';
 import 'package:note_app/services/ext_service.dart';
 import 'package:note_app/services/navigation_service.dart';
 
+import 'all_notes_menu.dart';
 import 'create_note_menu.dart';
 
 class HomeMenu extends Menu{
@@ -15,7 +16,10 @@ class HomeMenu extends Menu{
         write("\n\n\n\n\n\n");
         await Navigator.push(CreateNoteMenu());
       } break;
-      case "II": {} break;
+      case "II": {
+        write("\n\n\n\n\n\n");
+        await Navigator.push(AllNotesMenu());
+      } break;
       case "III": {} break;
       case "IV": exit(0);
       default: {
